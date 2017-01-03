@@ -104,10 +104,10 @@ def makeWebhookResult(parameters):
         pleuritic_chest_pain = "has pleuritic chest pain"
 
     med = "not taken any medications to treat this problem"
-    if (is_med):
-        med = is_med
+    if (is_med == "yes"):
+        med = "taken medications to treat this problem"
 
-    speech = name.title() + " is a " + str(calculate_age(dob)) + "yo " + gender + " who presents with " + day + " of " + condition + " that is " + productive + "." + subject + " reports " + dyspnea + "and " + pleuritic_chest_pain + ". " + subject + " has " + med + ". Nothing seems to make this problem better or worse."
+    speech = name.title() + " is a " + str(calculate_age(dob)) + "yo " + gender + " who presents with " + day + " of " + condition + " that is " + productive + ". " + subject + " reports " + dyspnea + "and " + pleuritic_chest_pain + ". " + subject + " has " + med + ". Nothing seems to make this problem better or worse."
         
     print("Response:")
     print(speech)
