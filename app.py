@@ -40,7 +40,7 @@ def processRequest(req):
 
 def calculate_age(born):
     today = date.today()
-    born = datetime.strptime(born, '%m/%d/%Y')
+    born = datetime.strptime(born, '%Y-%m-%d')
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 def makeWebhookResult(parameters):
