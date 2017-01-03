@@ -44,6 +44,7 @@ def calculate_age(born):
     return today.year - born.year - ((today.month, today.day) < (born.month, born.day))
 
 def makeWebhookResult(parameters):
+    print "HERE1"
     name = parameters.get("name")
     gender = parameters.get("gender")
     dob = parameters.get("dob")
@@ -62,7 +63,8 @@ def makeWebhookResult(parameters):
             
     if parameters is None:
         return {}
-
+    print "HERE2"
+    
     if (gender == "F"):
         subject = "She"
     else:
@@ -72,7 +74,8 @@ def makeWebhookResult(parameters):
         day = "1 day"
     else:
         day = day + " days"
-        
+
+    print "HERE3"
     condition = ""
     if (is_fever != "no"):
         condition = "subjective fever and "
@@ -85,7 +88,7 @@ def makeWebhookResult(parameters):
         condition = condition + "recovering cough"
     else:
         condition = condition + "cough that does not seem to be getting better or worse"
-            
+    print "HERE4"        
     productive = "not productive"
     if (is_productive == "yes"):
         productive = "productive of " + color + " sputum"
