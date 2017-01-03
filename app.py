@@ -92,9 +92,14 @@ def makeWebhookResult(parameters):
     productive = "not productive"
     if (is_productive == "yes"):
         productive = "productive of " + color + " sputum"
+
+    print "HERE5"
+    try:
+        speech = name + " is a " + str(calculate_age(dob)) + "yo " + gender + " who presents with " + day + " of " + condition + " that is " + productive + "."
+    except:
+        e = sys.exc_info()[0]
+        print e
         
-    speech = name + " is a " + str(calculate_age(dob)) + "yo " + gender + " who presents with " + day + " of " + condition + " that is " + productive + "."
-    
     print("Response:")
     print(speech)
 
