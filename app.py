@@ -88,25 +88,26 @@ def makeWebhookResult(parameters):
         condition = condition + "recovering cough"
     else:
         condition = condition + "cough that does not seem to be getting better or worse"
-    print "HERE4"        
+
     productive = "not productive"
     if (is_productive == "yes"):
         productive = "productive of " + color + " sputum"
+        
+    dyspnea = "no dyspnea "
+    if (is_dyspnea == "yes"):
+        if (dyspnea_when == "when i cough"):
+            dyspnea_when = "when " + subject.lower() + " coughs"
+        dyspnea = dyspnea_severity + " dyspnea " + dyspnea_when + " "
 
-    print "HERE5"
-    print name
-    print dob
-    print gender
-    print day
-    print condition
-    print productive
-    print calculate_age(dob)
-    
-    try:
-        speech = name + " is a " + str(calculate_age(dob)) + "yo " + gender + " who presents with " + day + " of " + condition + " that is " + productive + "."
-    except:
-        e = sys.exc_info()[0]
-        print e
+    pleuritic_chest_pain = "has no pleuritic chest pain"
+    if (dyspnea_pain == "yes"):
+        pleuritic_chest_pain = "has pleuritic chest pain"
+
+    med = "not taken any medications to treat this problem"
+    if (is_med):
+        med = is_med
+
+    speech = name.title() + " is a " + str(calculate_age(dob)) + "yo " + gender + " who presents with " + day + " of " + condition + " that is " + productive + "." + subject + " reports " + dyspnea + "and " + pleuritic_chest_pain + ". " + subject + " has " + med + ". Nothing seems to make this problem better or worse."
         
     print("Response:")
     print(speech)
